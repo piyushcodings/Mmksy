@@ -20,6 +20,6 @@ base
 requests
 ffmpeg
 yt-dlp
-git+https://github.com/Nkbots/nt-sp.git
-git+https://github.com/Nkbots/nt-sr.git
-git+https://github.com/Nkbots/mt-sr.git
+#git+https://github.com/Nkbots/nt-sp.git
+#git+https://github.com/Nkbots/nt-sr.git
+#git+https://github.com/Nkbots/mt-sr.git
