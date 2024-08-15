@@ -171,7 +171,7 @@ async def ytdl_worker(name, queue):
                 ]
             else:
         
-                minus_f_format = ytdl_format + "+bestaudio[ext=m4a]/best"
+                minus_f_format = ytdl_format + "+bestaudio[ext=m4a]/best[ext=mp3]/best"
                 command_to_exec = [
                     "yt-dlp",
                     "-c",
