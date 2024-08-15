@@ -8,7 +8,7 @@ class TEXT:
 
     START_TEXT =  """👋 Hey {} ♡
 
-I am Telegram Fastest Url Uploader Pro Bot 
+I am Telegram Fastest Url Uploader Bot 
 
 Press **/settings** to Configure me
 
