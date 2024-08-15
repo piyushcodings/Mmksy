@@ -13,12 +13,12 @@ from collections import defaultdict
 
 class Config:
     ACTIVE_DOWNLOADS = []
-    API_ID = int("10412514")
-    API_HASH = "4d55a7064ad72adcfa8944f505453a8c"
+    API_ID = int("17906941")
+    API_HASH = "02f7356fe1607e5fde0512195b4d7be5"
 
-    AUTH_USERS =  [int(i) for i in os.environ.get("AUTH_USERS", "1620169470").split(" ")]
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "6192974593:AAGZxFkcgaBh9xJyHLGjCvPTOnY6A_sIc2s")
-    DATABASE_URL = os.environ.get("DATABASE_URL", "mongodb+srv://sahaynitin2006:54xUl2DdnXQPntZx@cluster0.s8nwow5.mongodb.net/?retryWrites=true&w=majority")
+    AUTH_USERS =  [int(i) for i in os.environ.get("AUTH_USERS", "1996570767").split(" ")]
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "7503659482:AAFZH7CuYEhPrPEIDACUpnBLlUsCyp4EwK4")
+    DATABASE_URL = os.environ.get("DATABASE_URL", "mongodb+srv://gojomerge:5exfugtttf@cluster0.mefkdax.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
     DOWNLOAD_LOCATION = "./DOWNLOADS"
     DB_CHANNEL_ID = int(os.environ.get("DB_CHANNEL_ID", "-1001720609021"))
     PROCESS_MAX_TIMEOUT = 3600
@@ -27,7 +27,7 @@ class Config:
     TIME_GAP1 = {}
     TIME_GAP2 = {}
     timegap_message = {}
-    TRACE_CHANNEL = os.environ.get("DB_CHANNEL_ID", "-1001720609021")
+    TRACE_CHANNEL = os.environ.get("DB_CHANNEL_ID", "-1002016424677")
     last_edit = defaultdict(lambda: 0)
     SESSION_STRING = os.environ.get(
         "SESSION_STRING",
@@ -35,7 +35,7 @@ class Config:
     )
 
     # QUEUE
-    SESSION_NAME = os.environ.get("SESSION_NAME", "TellyBotzz")
+    SESSION_NAME = os.environ.get("SESSION_NAME", "PinaccleBots")
     WORKERS = 5
     QUEUE_MAXSIZE = 20
     normal_queue = asyncio.Queue(maxsize=QUEUE_MAXSIZE)
