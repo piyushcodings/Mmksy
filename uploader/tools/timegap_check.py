@@ -43,12 +43,12 @@ async def timegap_check(c, m, sent):
             banned_text += f"{ban_status['ban_duration']} day(s)\n"
             banned_text += '**Reason:** '
             banned_text += f"__**{ban_status['ban_reason']}**__\n\n"
-            banned_text += f"if you think this is a mistake contact Devloper [PinnacleBots](https://t.me/PinnacleSupport)"
+            banned_text += f"if you think this is a mistake contact Devloper [Shivam](https://t.me/Legend_Shivam_7)"
             await sent.edit(banned_text)
             return True
 
-    if m.from_user.id == Config.AUTH_USERS:
-        # If the user is the owner, no time gap is applied
+    if m.from_user.id in Config.AUTH_USERS:
+        # If the user is an auth user, no time gap is applied
         return False
 
     if m.from_user.id in Config.TIME_GAP1:
