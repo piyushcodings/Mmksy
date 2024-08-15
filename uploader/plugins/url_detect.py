@@ -99,9 +99,10 @@ async def http_url(c, m):
         except:
             pass
         return
+      
 
     #await m.reply_chat_action("typing")
-    if ("youtube" in url):
+    if ("youtu" in url):
         return await send.edit("Sorry This link Temporarily Not Working")
 
     if ("hotstar" in url):
