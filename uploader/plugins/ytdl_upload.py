@@ -257,7 +257,7 @@ async def ytdl_worker(name, queue):
                 except:
                     pass
                 settings = await c.db.get_all_settings(m.from_user.id)
-                screenshots = settings['screen_shot']
+               # screenshots = settings['screen_shot']
                 #samplevideo = settings['sample_video']
                 as_file = settings['upload_as_file']
                 thumb_id = settings['permanent_thumb']
