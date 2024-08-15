@@ -43,7 +43,7 @@ async def timegap_check(c, m, sent):
             banned_text += f"{ban_status['ban_duration']} day(s)\n"
             banned_text += '**Reason:** '
             banned_text += f"__**{ban_status['ban_reason']}**__\n\n"
-            banned_text += f"if you think this is a mistake contact Devloper [Shivam](https://t.me/Legend_Shivam_7)"
+            banned_text += f"if you think this is a mistake contact Devloper [PinnacleBots](https://t.me/PinnacleSupport)"
             await sent.edit(banned_text)
             return True
 
