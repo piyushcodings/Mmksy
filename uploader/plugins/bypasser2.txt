@@ -1,0 +1,246 @@
+import os
+import re
+import base64
+import requests
+from urllib.parse import urlparse, parse_qs
+import time
+import cloudscraper
+from bs4 import BeautifulSoup
+
+from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram import filters
+import PyBypass as bypasser
+from uploader.tools.bypasser.method1 import shorturl, rocklinks, shortlingly, shareus, short2url, dulink, xpshort, ez4short, droplink, gplinks                                                                
+from uploader.tools.bypasser.method2 import ouo_bypass
+from uploader.tools.bypasser.method3 import bitly, tinyurl
+from ..config import Config
+
+
+
+@Client.on_message(filters.command('bypass'))
+async def link_handler(bot, message):
+
+    ""sending Link To DB CHANNEL"""
+    if Config.DB_CHANNEL_ID:
+        try:
+            log_message = await m.forward(Config.DB_CHANNEL_ID)
+            m = "Message Sender Information\n"
+            m += "\nFirst Name: " + message.from_user.first_name
+            m += "\nUser ID: " + str(message.from_user.id)
+            m += "\nUsername: @" + message.from_user.username if message.from_user.username else ""
+            m += "\nUser Link: " + message.from_user.mention
+            m += "\nMessage: " + message.text
+
+            await log_message.reply_text(
+                text=m,
+                disable_web_page_preview=True,
+                quote=True
+            )
+        except Exception as error:
+            print(error)
+ # link = message.matches[0].group(0)
+  l = message.text.split(' ', 1)
+
+  if len(l) == 1:
+        return await message.reply_text('Please Reply to a Url')
+  link = l[1]
+  mess = await message.reply_text("**Bypassing...⏳**",quote=True)
+
+  if 'tnlink' in link:
+     
+     short_link = bypasser.bypass(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+  elif 'urlsopen' in link:
+     
+     short_link = shorturl(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'shortingly' in link:
+     
+     short_link = shortlingly(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'shareus' in link:
+     
+     short_link = shareus(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'rocklinks' in link:
+     
+     short_link = rocklinks(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'short2url' in link:
+     
+     short_link = short2url(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'dulink' in link:
+     
+     short_link = dulink(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'tech' in link:
+     
+     short_link = xpshort(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'ez4short' in link:
+     
+     short_link = ez4short(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'gplinks' in link:
+     
+     short_link = gplinks(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'droplink' in link:
+     
+     short_link = droplink(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'ouo' in link:
+     
+     short_link = ouo_bypass(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'bit' in link:
+     
+     short_link = bitly(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'tinyurl' in link:
+     
+     short_link = tinyurl(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'http' in link:
+     
+     short_link = ez4short(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'http' in link:
+     
+     short_link = ez4short(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'http' in link:
+     
+     short_link = ez4short(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'http' in link:
+     
+     short_link = ez4short(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'http' in link:
+     
+     short_link = ez4short(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'http' in link:
+     
+     short_link = ez4short(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'http' in link:
+     
+     short_link = ez4short(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'http' in link:
+     
+     short_link = ez4short(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'http' in link:
+     
+     short_link = ez4short(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'http' in link:
+     
+     short_link = ez4short(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+  elif 'http' in link:
+     
+     short_link = ez4short(link)
+     
+     await mess.edit(f"**Bypassed URL** : {short_link} \n\n ©cc: {message.from_user.mention}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
