@@ -8,7 +8,6 @@ pyromod
 hachoir
 tgcrypto
 dnspython
-
 pyrogram
 cloudscraper
 olefile
@@ -16,10 +15,4 @@ requests
 nest_asyncio
 PyBypass
 datetime
-base
-requests
 ffmpeg
-yt-dlp
-#git+https://github.com/Nkbots/nt-sp.git
-#git+https://github.com/Nkbots/nt-sr.git
-#git+https://github.com/Nkbots/mt-sr.git
