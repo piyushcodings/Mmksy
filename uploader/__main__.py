@@ -20,7 +20,7 @@ from .database.database import Database
 
 def main():
 
-    Uploader = Client("URL_uploader_Bot",
+    Uploader = Client("Uploader_Bot",
                  bot_token=Config.BOT_TOKEN,
                  api_id=Config.API_ID,
                  api_hash=Config.API_HASH,
@@ -34,7 +34,7 @@ def main():
     time = datetime.datetime.now(pytz.timezone('Asia/Kolkata'))
     Config.RESTART_TIME.append(time)
 
-    Uploader.db = Database(Config.DATABASE_URL, 'AladdiYasmineBots')
+    Uploader.db = Database(Config.DATABASE_URL, 'FamilyBots')
     Uploader.broadcast_ids = {}
     Uploader.run()
     
