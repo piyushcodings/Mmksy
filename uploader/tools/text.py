@@ -12,23 +12,16 @@ I am Telegram Fastest Url Uploader Pro Bot
 
 Press **/settings** to Configure me
 
-**@TellyBotzz**
+**@PinaccleBots**
 """
 
     ABOUT = """
-♻️ My Name : [Url Uploader](http://t.me/TellyUrlUploader_bot)
 
-⛲ Channel : [Telly Bots](https://t.me/TellyBotzz)
+👲 Devloper : [PinaccleBots](https://t.me/PinnacleSupport)
 
-🌿 Version : [5.0](http://t.me/TellyUrlUploader_bot)
+📇 Framework : [Pyrogram 2.0](https://docs.pyrogram.org/)
 
-👲 Devloper : [Shivam](https://t.me/Legend_Shivam_7)
-
-📚 Language : [Python 3.10.6](https://www.python.org/)
-
-📇 Framework : [Pyrogram 2.0.35](https://docs.pyrogram.org/)
-
-🚴 Maintained By : [Telly Bots](https://t.me/TellyBotzz)
+🚴 Maintained By : [PinnacleBots](https://t.me/PinaccleBots)
 
 💠 Bot Restarted On `{}` (IndianTimeZone)
 """
@@ -41,19 +34,17 @@ Press **/settings** to Configure me
 Donate Me For Keep This Bot Up
 
 You Can Send Any Amount 
-of 20₹, 30₹, 50₹, 70₹, 100₹, 200₹ 😊
+of 20₹, 30₹, 50₹, 70₹, 100₹, 200₹😊
  
 📨 Payment Methods:
  
 GooglePay / Paytm / PhonPay / UPI
 
-Donate :- `darshil701@paytm`
- 
-More Info Contact: **[Shivam](https://t.me/Legend_Shivam_7)**
+for donations contact Unknown
 
 """
 
-    HELP_USER = """You Need Help  😅  
+    HELP_USER = """You Need Help   
    
 ✵ First go to **/settings** and configure me.
 
