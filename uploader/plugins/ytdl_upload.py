@@ -162,7 +162,7 @@ async def ytdl_worker(name, queue):
                     "yt-dlp",
                     "-c",
                     "--max-filesize", str(Config.TG_MAX_FILE_SIZE),
-                    "--bidi-workaround", 
+                    "--hls-prefer-ffmpeg", 
                     "--extract-audio",
                     "--audio-format", ytdl_ext,
                     "--audio-quality", ytdl_format,
@@ -177,9 +177,9 @@ async def ytdl_worker(name, queue):
                     "-c",
                     "--max-filesize", str(Config.TG_MAX_FILE_SIZE),
                     "--embed-subs",
-                    
+                  
                     "-f", minus_f_format,
-                    "--bidi-workaround", url,
+                    "--hls-prefer-ffmpeg", url,
                     "-o", download_directory,
                     "--geo-bypass-country",
                     "IN"
