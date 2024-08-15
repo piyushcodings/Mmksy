@@ -20,7 +20,7 @@ class Config:
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "7503659482:AAFZH7CuYEhPrPEIDACUpnBLlUsCyp4EwK4")
     DATABASE_URL = os.environ.get("DATABASE_URL", "mongodb+srv://gojomerge:5exfugtttf@cluster0.mefkdax.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
     DOWNLOAD_LOCATION = "./DOWNLOADS"
-    DB_CHANNEL_ID = int(os.environ.get("DB_CHANNEL_ID", "-1001720609021"))
+    DB_CHANNEL_ID = int(os.environ.get("DB_CHANNEL_ID", "-1002016424677"))
     PROCESS_MAX_TIMEOUT = 3600
     RESTART_TIME = []
     TG_MAX_FILE_SIZE = 3980000000
