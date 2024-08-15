@@ -450,6 +450,10 @@ async def ytdl_worker(name, queue):
 
 
 async def complete_process(c, m):
+    if m.from_user.id in Config.AUTH_USERS:
+        await m.reply_text("**Task Completed! You Can Send Me New Task Now**")
+        return
+
     Config.TIME_GAP2[m.from_user.id] = time.time()
     started_time = Config.TIME_GAP1[m.from_user.id]
     end_time = Config.TIME_GAP2[m.from_user.id]
