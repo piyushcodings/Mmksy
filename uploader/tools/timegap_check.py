@@ -47,7 +47,7 @@ async def timegap_check(c, m, sent):
             await sent.edit(banned_text)
             return True
 
-    if m.from_user.id == Config.OWNER_ID:
+    if m.from_user.id == Config.AUTH_USERS:
         # If the user is the owner, no time gap is applied
         return False
 
