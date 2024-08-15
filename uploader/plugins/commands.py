@@ -132,7 +132,7 @@ async def start(c, m, cb=False):
 
     button = [
         [
-            InlineKeyboardButton('♻️ Developer', url='https://t.me/Legend_Shivam_7'),
+            InlineKeyboardButton('♻️ Developer', url='https://t.me/PinnacleBots'),
             InlineKeyboardButton('🌷 About', callback_data='about')
         ],
         [
