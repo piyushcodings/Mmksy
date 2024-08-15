@@ -16,3 +16,4 @@ nest_asyncio
 PyBypass
 datetime
 ffmpeg
+yt-dlp
