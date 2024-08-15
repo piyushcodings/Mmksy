@@ -1,2 +1,2 @@
-echo "starting Bot ~@AladdinYasmineBots";
+echo "starting Bot ~@PinaccleBots";
 python3 -m uploader 
