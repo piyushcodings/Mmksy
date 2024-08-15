@@ -251,3 +251,44 @@ async def http_url(c, m):
             )
         except:
             pass
+
+from pyrogram import Client, filters
+from pytube import YouTube
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
+@Client.on_message(filters.text & filters.regex(r'https://youtu.be|https://www.youtube.com/watch'))
+async def youtube_dl(client, message):
+    url = message.text
+    yt = YouTube(url)
+    await message.reply(f"**Starting video download**: `{yt.title}` **from channel**: `{yt.author}`")
+    
+    # Get available streams with resolutions
+    streams = yt.streams.filter(progressive=True)
+    resolutions = []
+    for stream in streams:
+        if stream.resolution:
+            resolutions.append(stream.resolution)
+    
+    # Create resolution buttons
+    buttons = []
+    for i, res in enumerate(resolutions):
+        buttons.append([InlineKeyboardButton(res, callback_data=f"res_{i}")])
+    
+    # Send resolution buttons
+    await message.reply("Choose a video resolution:", reply_markup=InlineKeyboardMarkup(buttons))
+
+@Client.on_callback_query(filters.regex(r'res_\d+'))
+async def handle_resolution_choice(client, callback_query):
+    resolution_index = int(callback_query.data.split("_")[1])
+    yt = YouTube(callback_query.message.reply_to_message.text)
+    streams = yt.streams.filter(progressive=True)
+    chosen_stream = streams[resolution_index]
+    
+    # Download the chosen stream
+    await callback_query.answer(f"Downloading video in {chosen_stream.resolution} resolution...")
+    chosen_stream.download(output_path="TEMP", filename=f"video_{callback_query.from_user.id}.mp4")
+    
+    # Send the downloaded video
+    await callback_query.message.reply_video(f"TEMP/video_{callback_query.from_user.id}.mp4", caption="Here it is!")
+    os.remove(f"TEMP/video_{callback_query.from_user.id}.mp4")
+
