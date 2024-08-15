@@ -64,7 +64,7 @@ async def close_cb(c, m):
 async def back_cb(c, m):
     button = [
         [
-            InlineKeyboardButton('♻️ Developer', url='https://t.me/Ovbots'),
+            InlineKeyboardButton('♻️ Developer', url='https://t.me/PinnacleBots'),
             InlineKeyboardButton('🌷 About', callback_data='about')
         ],
         [
