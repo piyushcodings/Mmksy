@@ -50,6 +50,8 @@ async def http_url(c, m):
     if time_gap: # returning message if timegap not completed 
         return
 
+  
+
     pattern = re.compile(r'https?://[^\s]+')
     url = pattern.findall(m.text)
     try:
@@ -87,6 +89,7 @@ async def http_url(c, m):
         except:
             pass
         return
+      
 
     if file_size > Config.TG_MAX_FILE_SIZE:
         try:
@@ -98,6 +101,8 @@ async def http_url(c, m):
         return
 
     #await m.reply_chat_action("typing")
+    if ("youtube" in url):
+        return await send.edit("Sorry This link Temporarily Not Working")
 
     if ("hotstar" in url):
         return await send.edit("Sorry This Link Was Not Supported")
