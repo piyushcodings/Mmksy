@@ -47,6 +47,10 @@ async def timegap_check(c, m, sent):
             await sent.edit(banned_text)
             return True
 
+    if m.from_user.id == Config.OWNER_ID:
+        # If the user is the owner, no time gap is applied
+        return False
+
     if m.from_user.id in Config.TIME_GAP1:
         # If one process is running
         text = "**✋ Please wait untill the previous task complete.**\n\n"
