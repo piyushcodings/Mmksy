@@ -171,13 +171,12 @@ async def ytdl_worker(name, queue):
                 ]
             else:
         
-                minus_f_format = ytdl_format + "+bestaudio"
+                minus_f_format = ytdl_format + "+bestaudio[ext=m4a]/best"
                 command_to_exec = [
                     "yt-dlp",
                     "-c",
                     "--max-filesize", str(Config.TG_MAX_FILE_SIZE),
                     "--embed-subs",
-                  
                     "-f", minus_f_format,
                     "--hls-prefer-ffmpeg", url,
                     "-o", download_directory,
