@@ -12,7 +12,7 @@ I am Telegram Fastest Url Uploader Bot
 
 Press **/settings** to Configure me
 
-**@PinaccleBots**
+**@PinnacleBots**
 """
 
     ABOUT = """
