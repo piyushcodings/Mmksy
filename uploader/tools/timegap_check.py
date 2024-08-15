@@ -9,19 +9,19 @@ async def timegap_check(c, m, sent):
     and checking the parallel process"""
 
     try:
-        chat = await c.get_chat_member('TellyBotzz', m.from_user.id)
+        chat = await c.get_chat_member('PinnacleBots', m.from_user.id)
         if chat.status=='kicked':
             await sent.edit('😡 You Are Banned 😝')
             return True
 
     except UserNotParticipant:
-        button = [[InlineKeyboardButton('🔰 Join Now 🔰', url='https://t.me/TellyBotzz')]]
+        button = [[InlineKeyboardButton('🔰 Join Now 🔰', url='https://t.me/PinnacleBots')]]
         markup = InlineKeyboardMarkup(button)
         await sent.edit(text=f"👋 Hi {m.from_user.mention(style='md')},\n\n**Please Join My Updates Channel to use this Bot!**\n\nDue to Overload, Only Channel Subscribers can use the Bot!", reply_markup=markup)
         return True
 
     except Exception as e:
-        await sent.edit("**Something went Wrong. Contact my Devloper [Shivam](https://t.me/Legend_Shivam_7)", disable_web_page_preview=True)
+        await sent.edit("**Something went Wrong. Contact my Devloper [PinaccleBots](https://t.me/PinnacleSupport)", disable_web_page_preview=True)
         return True
 
     if not await c.db.is_user_exist(m.from_user.id):
