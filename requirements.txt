@@ -19,7 +19,7 @@ datetime
 base
 requests
 ffmpeg
-git+https://github.com/Nkbots/nt-dl.git
+yt-dlp
 git+https://github.com/Nkbots/nt-sp.git
 git+https://github.com/Nkbots/nt-sr.git
 git+https://github.com/Nkbots/mt-sr.git
