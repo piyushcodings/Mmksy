@@ -505,37 +505,37 @@ async def complete_process(c, m):
     del Config.TIME_GAP2[m.from_user.id]
 
 
-async def get_duration(video_path: str) -> float:
+async def get_duration(video_path):
     """
     Get the duration of a video file.
 
     Args:
-        video_path (str): The path to the video file.
+        video_path: The path to the video file.
 
     Returns:
-        float: The duration of the video in seconds.
+        The duration of the video in seconds.
     """
     cmd = ["ffprobe", "-i", video_path, "-show_entries", "format=duration", "-v", "quiet", "-of", "csv=p=0"]
     try:
         output = await asyncio.create_subprocess_exec(*cmd, stdout=asyncio.subprocess.PIPE)
         stdout, _ = await output.communicate()
-        video_duration = float(stdout.decode("utf-8").strip())
-        return video_duration
+        video_duration = stdout.decode("utf-8").strip()
+        return float(video_duration)
     except asyncio.SubprocessError as e:
         logging.error(f"Error getting video duration: {e}")
         return None
 
-async def generate_sample_video(video_path: str, sample_video_path: str, duration: int = SAMPLE_VIDEO_DURATION) -> bool:
+async def generate_sample_video(video_path, sample_video_path, duration=SAMPLE_VIDEO_DURATION):
     """
     Generate a sample video from a given video file.
 
     Args:
-        video_path (str): The path to the original video file.
-        sample_video_path (str): The path to save the sample video file.
-        duration (int, optional): The duration of the sample video in seconds. Defaults to SAMPLE_VIDEO_DURATION.
+        video_path: The path to the original video file.
+        sample_video_path: The path to save the sample video file.
+        duration: The duration of the sample video in seconds. Defaults to SAMPLE_VIDEO_DURATION.
 
     Returns:
-        bool: True if the sample video was generated successfully, False otherwise.
+        True if the sample video was generated successfully, False otherwise.
     """
     video_duration = await get_duration(video_path)
     if video_duration is None:
@@ -554,16 +554,16 @@ async def generate_sample_video(video_path: str, sample_video_path: str, duratio
 
     return True
 
-async def generate_screenshot(video_path: str, screenshot_path: str) -> bool:
+async def generate_screenshot(video_path, screenshot_path):
     """
     Generate a screenshot from a given video file.
 
     Args:
-        video_path (str): The path to the original video file.
-        screenshot_path (str): The path to save the screenshot file.
+        video_path: The path to the original video file.
+        screenshot_path: The path to save the screenshot file.
 
     Returns:
-        bool: True if the screenshot was generated successfully, False otherwise.
+        True if the screenshot was generated successfully, False otherwise.
     """
     video_duration = await get_duration(video_path)
     if video_duration is None:
