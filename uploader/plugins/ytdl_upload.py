@@ -7,6 +7,15 @@ logger = logging.getLogger(__name__)
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
+import asyncio
+import subprocess
+import random
+import logging
+
+# Constants
+SAMPLE_VIDEO_DURATION = 10
+MAX_START_TIME = 30
+CRF_VALUE = 18
 
 import os
 import re
@@ -15,7 +24,7 @@ import json
 import random
 import shutil
 import asyncio
-import subprocess
+#import subprocess
 
 from ..config import Config
 from collections import defaultdict
@@ -496,38 +505,66 @@ async def complete_process(c, m):
     del Config.TIME_GAP2[m.from_user.id]
 
 
-async def get_duration(video_path):
+async def get_duration(video_path: str) -> float:
+    """
+    Get the duration of a video file.
 
-    cmd = f"ffprobe -i {video_path} -show_entries format=duration -v quiet -of csv=p=0"
+    Args:
+        video_path (str): The path to the video file.
+
+    Returns:
+        float: The duration of the video in seconds.
+    """
+    cmd = ["ffprobe", "-i", video_path, "-show_entries", "format=duration", "-v", "quiet", "-of", "csv=p=0"]
     try:
-        output = subprocess.check_output(cmd, shell=True)
-        video_duration = float(output.decode("utf-8").strip())
+        output = await asyncio.create_subprocess_exec(*cmd, stdout=asyncio.subprocess.PIPE)
+        stdout, _ = await output.communicate()
+        video_duration = float(stdout.decode("utf-8").strip())
         return video_duration
-    except subprocess.CalledProcessError as e:
-        print(f"Error getting video duration: {e}")
+    except asyncio.SubprocessError as e:
+        logging.error(f"Error getting video duration: {e}")
         return None
 
-async def generate_sample_video(video_path, sample_video_path, duration=10):
+async def generate_sample_video(video_path: str, sample_video_path: str, duration: int = SAMPLE_VIDEO_DURATION) -> bool:
+    """
+    Generate a sample video from a given video file.
 
+    Args:
+        video_path (str): The path to the original video file.
+        sample_video_path (str): The path to save the sample video file.
+        duration (int, optional): The duration of the sample video in seconds. Defaults to SAMPLE_VIDEO_DURATION.
+
+    Returns:
+        bool: True if the sample video was generated successfully, False otherwise.
+    """
     video_duration = await get_duration(video_path)
     if video_duration is None:
         return False
 
     # Calculate the start time for the sample video
-    start_time = min(video_duration / 2, 30)  # Start at the middle of the video, or 30 seconds, whichever is shorter
+    start_time = min(video_duration / 2, MAX_START_TIME)  # Start at the middle of the video, or MAX_START_TIME seconds, whichever is shorter
 
     # Use FFmpeg to extract a sample video from the original video
-    cmd = f"ffmpeg -i {video_path} -ss {start_time} -t {duration} -c:v libx264 -crf 18 {sample_video_path}"
+    cmd = ["ffmpeg", "-i", video_path, "-ss", str(start_time), "-t", str(duration), "-c:v", "libx264", "-crf", str(CRF_VALUE), sample_video_path]
     try:
-        subprocess.run(cmd, shell=True, check=True)
-    except subprocess.CalledProcessError as e:
-        print(f"Error generating sample video: {e}")
+        await asyncio.create_subprocess_exec(*cmd)
+    except asyncio.SubprocessError as e:
+        logging.error(f"Error generating sample video: {e}")
         return False
 
     return True
 
-async def generate_screenshot(video_path, screenshot_path):
+async def generate_screenshot(video_path: str, screenshot_path: str) -> bool:
+    """
+    Generate a screenshot from a given video file.
 
+    Args:
+        video_path (str): The path to the original video file.
+        screenshot_path (str): The path to save the screenshot file.
+
+    Returns:
+        bool: True if the screenshot was generated successfully, False otherwise.
+    """
     video_duration = await get_duration(video_path)
     if video_duration is None:
         return False
@@ -536,12 +573,12 @@ async def generate_screenshot(video_path, screenshot_path):
     timestamp = random.uniform(0, video_duration)
 
     # Use FFmpeg to extract a screenshot from the original video
-    cmd = f"ffmpeg -i {video_path} -ss {timestamp} -vframes 1 {screenshot_path}"
+    cmd = ["ffmpeg", "-i", video_path, "-ss", str(timestamp), "-vframes", "1", screenshot_path]
     try:
-        subprocess.run(cmd, shell=True, check=True)
-    except subprocess.CalledProcessError as e:
-        print(f"Error generating screenshot: {e}")
+        await asyncio.create_subprocess_exec(*cmd)
+    except asyncio.SubprocessError as e:
+        logging.error(f"Error generating screenshot: {e}")
         return False
 
     return True
-            
+
