@@ -60,7 +60,7 @@ async def settings(c, m, cb=False):
         ],[
         InlineKeyboardButton(f"Sample Video: {sample_video_text}", callback_data=f"setting+sample_video+{not sample_video}")
         ],[
-        InlineKeyboardButton(f"Screenshots: {screenshot_text}", callback_data=f"setting+screenshot+{not screenshot}")
+        InlineKeyboardButton(f"Screenshots: {screenshot_text}", callback_data=f"setting+screen_shot+{not screen_shot}")
         ],[
         InlineKeyboardButton(f"YTDL Filter: {ext_text} ", callback_data=f"ytdl_ext+{ytdl_ext}")
     ]]
