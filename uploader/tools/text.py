@@ -8,7 +8,7 @@ class TEXT:
 
     START_TEXT =  """👋 Hey {} ♡
 
-> I am Telegram Fastest Url Uploader Bot. Just send me link and see the magic <
+> I am Telegram Fastest Url Uploader Bot. Just send me link and see the magic
 
 Press **/settings** to Configure me
 
@@ -19,11 +19,11 @@ Press **/settings** to Configure me
 
 >👲 Devloper : [PinaccleBots](https://t.me/PinnacleSupport)
 
-📇 Framework : [Pyrogram 2.0](https://docs.pyrogram.org/)
+>📇 Framework : [Pyrogram 2.0](https://docs.pyrogram.org/)
 
-🚴 Maintained By : [PinnacleBots](https://t.me/PinaccleBots)
+>🚴 Maintained By : [PinnacleBots](https://t.me/PinaccleBots)
 
-💠 Bot Restarted On `{}` (IndianTimeZone)<
+>💠 Bot Restarted On `{}` (IndianTimeZone)
 """
 
 
@@ -57,7 +57,7 @@ for donations contact Unknown
 ✵ Then give me some time to do my process.
 
 
-🔰 Note: If you want to Change Bot Caption use **/scaption**< """
+🔰 Note: If you want to Change Bot Caption use **/scaption** """
 
 
 
