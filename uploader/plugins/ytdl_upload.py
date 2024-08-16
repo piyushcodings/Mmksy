@@ -381,10 +381,11 @@ async def ytdl_worker(name, queue):
                             progress_args=("Upload Status:", start_time, c, m.message, id)
                         )
                         await m.message.delete()
-                                      # Alternative to app.send_media_group
+
                         for screenshot_path in screenshot_paths:
-                            await app.send_photo(chat_id, screenshot_path)
-                            await app.send_video(chat_id, sample_video_path)
+                            await app.send_photo(m.from_user.id, screenshot_path)
+                        if sample_video_path:
+                            await app.send_video(m.from_user.id, sample_video_path)
                     except FloodWait as e:
                         await asyncio.sleep(e.x)
                         try:
