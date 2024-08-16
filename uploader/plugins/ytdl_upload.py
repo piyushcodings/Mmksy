@@ -256,11 +256,26 @@ async def ytdl_worker(name, queue):
                 except:
                     pass
                 settings = await c.db.get_all_settings(m.from_user.id)
-               # screenshots = settings['screen_shot']
-                #samplevideo = settings['sample_video']
+                screenshots = settings['screen_shot']
+                samplevideo = settings['sample_video']
                 as_file = settings['upload_as_file']
                 thumb_id = settings['permanent_thumb']
+               # screenshots = settings['screen_shot']
+             #   samplevideo = settings['sample_video']
+             #   as_file = settings['upload_as_file']
+            #    thumb_id = settings['permanent_thumb']
 
+                # Generate screenshots
+                screenshot_paths = []
+                for i in range(screenshots):
+                    screenshot_path = f"{tmp_directory_for_each_user}/screenshot_{i}.png"
+                    await generate_screenshot(download_directory, screenshot_path)
+                    screenshot_paths.append(screenshot_path)
+
+                # Generate sample video
+                sample_video_path = f"{tmp_directory_for_each_user}/sample_video.mp4"
+                await generate_sample_video(download_directory, sample_video_path)
+              
                 try:
                     duration = await get_duration(download_directory)
                 except:
