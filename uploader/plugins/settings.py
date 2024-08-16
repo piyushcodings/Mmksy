@@ -45,8 +45,8 @@ async def settings(c, m, cb=False):
     sample_video = settings['sample_video']
     sample_video_text = 'On ' if sample_video else 'Off ' 
 
-    screenshot = settings['screenshot']
-    screenshot_text = 'On ' if screenshot else 'Off ' 
+    screen_shot = settings['screen_shot']
+    screenshot_text = 'On ' if screen_shot else 'Off ' 
   
     ytdl_ext = settings['extension']
     ext_text = Config.Extension[ytdl_ext]
