@@ -42,19 +42,14 @@ async def settings(c, m, cb=False):
     thumbnail = settings['permanent_thumb']
     thumb_text = 'ShowThumb🌌' if thumbnail else 'Set Custom 🌆 Thumbnail '
 
-    ytdl_ext = settings['extension']
-    ext_text = Config.Extension[ytdl_ext]
-
-    thumb_text = 'ShowThumb' if thumbnail else 'Set Custom Thumbnail '
-
-    ytdl_ext = settings['extension']
-    ext_text = Config.Extension[ytdl_ext]
-
     sample_video = settings['sample_video']
     sample_video_text = 'On ' if sample_video else 'Off ' 
 
     screenshot = settings['screenshot']
     screenshot_text = 'On ' if screenshot else 'Off ' 
+  
+    ytdl_ext = settings['extension']
+    ext_text = Config.Extension[ytdl_ext]
 
     settings_btn = [[
         InlineKeyboardButton(f'{upload_text}', callback_data=f"setting+upload_as_file+{not upload_mode}")
