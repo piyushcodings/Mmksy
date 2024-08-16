@@ -34,13 +34,13 @@ async def settings(c, m, cb=False):
     settings = await c.db.get_all_settings(m.from_user.id)
 
     upload_mode = settings['upload_as_file']
-    upload_text = 'ᴜᴘʟᴏᴀᴅ ᴀs 🗂️ ғɪʟᴇ' if upload_mode else 'ᴜᴘʟᴏᴀᴅ ᴀs 🎥 ᴠɪᴅᴇᴏ'
+    upload_text = '🗂️ File' if upload_mode else '🎥 Video'
 
     bot_updates_mode = settings['bot_updates']
-    bot_updates_text = 'ᴏɴ 🔔' if bot_updates_mode else 'ᴏғғ 🔕' 
+    bot_updates_text = 'On 🔔' if bot_updates_mode else 'Off 🔕' 
 
     thumbnail = settings['permanent_thumb']
-    thumb_text = 'sʜᴏᴡ ᴛʜᴜᴍʙɴᴀɪʟ 🌌' if thumbnail else 'sᴇᴛ ᴄᴜsᴛᴏᴍ 🌆 ᴛʜᴜᴍʙɴᴀɪʟ '
+    thumb_text = 'ShowThumb🌌' if thumbnail else 'Set Custom 🌆 Thumbnail '
 
     ytdl_ext = settings['extension']
     ext_text = Config.Extension[ytdl_ext]
