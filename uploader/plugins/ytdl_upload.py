@@ -381,6 +381,10 @@ async def ytdl_worker(name, queue):
                             progress_args=("Upload Status:", start_time, c, m.message, id)
                         )
                         await m.message.delete()
+                                      # Alternative to app.send_media_group
+                        for screenshot_path in screenshot_paths:
+                            await app.send_photo(chat_id, screenshot_path)
+                            await app.send_video(chat_id, sample_video_path)
                     except FloodWait as e:
                         await asyncio.sleep(e.x)
                         try:
@@ -398,6 +402,7 @@ async def ytdl_worker(name, queue):
                             pass
                         del Config.TIME_GAP1[m.from_user.id]
                         continue 
+                      
  
                 if (as_file) & (ytdl_ext != "mp3"):
                     try:
