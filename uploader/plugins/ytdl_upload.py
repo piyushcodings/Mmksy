@@ -383,9 +383,9 @@ async def ytdl_worker(name, queue):
                         await m.message.delete()
 
                         for screenshot_path in screenshot_paths:
-                            await app.send_photo(m.from_user.id, screenshot_path)
+                            await c.send_photo(m.from_user.id, screenshot_path)
                         if sample_video_path:
-                            await app.send_video(m.from_user.id, sample_video_path)
+                            await c.send_video(m.from_user.id, sample_video_path)
                     except FloodWait as e:
                         await asyncio.sleep(e.x)
                         try:
