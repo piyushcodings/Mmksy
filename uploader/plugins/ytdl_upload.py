@@ -489,5 +489,52 @@ async def complete_process(c, m):
     del Config.TIME_GAP2[m.from_user.id]
 
 
+async def get_duration(video_path):
 
+    cmd = f"ffprobe -i {video_path} -show_entries format=duration -v quiet -of csv=p=0"
+    try:
+        output = subprocess.check_output(cmd, shell=True)
+        video_duration = float(output.decode("utf-8").strip())
+        return video_duration
+    except subprocess.CalledProcessError as e:
+        print(f"Error getting video duration: {e}")
+        return None
+
+async def generate_sample_video(video_path, sample_video_path, duration=10):
+
+    video_duration = await get_duration(video_path)
+    if video_duration is None:
+        return False
+
+    # Calculate the start time for the sample video
+    start_time = min(video_duration / 2, 30)  # Start at the middle of the video, or 30 seconds, whichever is shorter
+
+    # Use FFmpeg to extract a sample video from the original video
+    cmd = f"ffmpeg -i {video_path} -ss {start_time} -t {duration} -c:v libx264 -crf 18 {sample_video_path}"
+    try:
+        subprocess.run(cmd, shell=True, check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Error generating sample video: {e}")
+        return False
+
+    return True
+
+async def generate_screenshot(video_path, screenshot_path):
+
+    video_duration = await get_duration(video_path)
+    if video_duration is None:
+        return False
+
+    # Generate a random timestamp for the screenshot
+    timestamp = random.uniform(0, video_duration)
+
+    # Use FFmpeg to extract a screenshot from the original video
+    cmd = f"ffmpeg -i {video_path} -ss {timestamp} -vframes 1 {screenshot_path}"
+    try:
+        subprocess.run(cmd, shell=True, check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Error generating screenshot: {e}")
+        return False
+
+    return True
             
