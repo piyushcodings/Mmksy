@@ -17,7 +17,7 @@ class Config:
     API_HASH = "02f7356fe1607e5fde0512195b4d7be5"
 
     AUTH_USERS =  [int(i) for i in os.environ.get("AUTH_USERS", "1996570767").split(" ")]
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "7503659482:AAE-XCbegkg7tBt5CKLB9eWiN6UgxVNlZ4I")
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "7503659482:AAErUtMRGo0TN_CV2fB_ogAzw1Np47r7Ksc")
     DATABASE_URL = os.environ.get("DATABASE_URL", "mongodb+srv://gojomerge:5exfugtttf@cluster0.mefkdax.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
     DOWNLOAD_LOCATION = "./DOWNLOADS"
     DB_CHANNEL_ID = int(os.environ.get("DB_CHANNEL_ID", "-1002016424677"))
