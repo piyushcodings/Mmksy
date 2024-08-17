@@ -42,27 +42,21 @@ async def settings(c, m, cb=False):
     thumbnail = settings['permanent_thumb']
     thumb_text = 'ShowThumb🌌' if thumbnail else 'Set Custom 🌆 Thumbnail '
 
-    sample_video = settings['sample_video']
-    sample_video_text = 'On ' if sample_video else 'Off ' 
-
-    screen_shot = settings['screen_shot']
-    screenshot_text = 'On ' if screen_shot else 'Off ' 
-  
     ytdl_ext = settings['extension']
     ext_text = Config.Extension[ytdl_ext]
+
+
+    
 
     settings_btn = [[
         InlineKeyboardButton(f'{upload_text}', callback_data=f"setting+upload_as_file+{not upload_mode}")
         ],[
-        InlineKeyboardButton(f"Bot Updates: {bot_updates_text}", callback_data=f"setting+bot_updates+{not bot_updates_mode}")
+        InlineKeyboardButton(f"ʙᴏᴛ ᴜᴘᴅᴀᴛᴇs ♻️: {bot_updates_text}", callback_data=f"setting+bot_updates+{not bot_updates_mode}")
         ],[
         InlineKeyboardButton(f"{thumb_text}", callback_data=f"thumbnail")
         ],[
-        InlineKeyboardButton(f"Sample Video: {sample_video_text}", callback_data=f"setting+sample_video+{not sample_video}")
-        ],[
-        InlineKeyboardButton(f"Screenshots: {screenshot_text}", callback_data=f"setting+screen_shot+{not screen_shot}")
-        ],[
-        InlineKeyboardButton(f"YTDL Filter: {ext_text} ", callback_data=f"ytdl_ext+{ytdl_ext}")
+
+        InlineKeyboardButton(f"ʏᴛᴅʟ ғɪʟᴛᴇʀ 🌀: {ext_text} 🔍", callback_data=f"ytdl_ext+{ytdl_ext}")
     ]]
 
     if cb:
@@ -72,19 +66,18 @@ async def settings(c, m, cb=False):
         if cb:
             await m.answer()
             await m.message.edit(
-                text="⚙️ Settings",
+                text="⚙️ 𝖢𝗈𝗇𝖿𝗂𝗀 𝖡𝗈𝗍 𝖲𝖾𝗍𝗍𝗂𝗇𝗀𝗌",
+               
                 reply_markup=InlineKeyboardMarkup(settings_btn)
             )
         if not cb:
             await send_message.edit(
-                text="⚙️ Settings",
+                text="⚙️ 𝖢𝗈𝗇𝖿𝗂𝗀 𝖡𝗈𝗍 𝖲𝖾𝗍𝗍𝗂𝗇𝗀𝗌",
+               
                 reply_markup=InlineKeyboardMarkup(settings_btn)
             )
     except:
         pass
-    
-
-
 
 
 #################### Callbacks related to Settings ⚙ ####################
