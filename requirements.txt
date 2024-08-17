@@ -8,7 +8,7 @@ pyromod
 hachoir
 tgcrypto
 dnspython
-pyrogram
+pyrofork
 cloudscraper
 olefile
 requests
