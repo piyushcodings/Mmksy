@@ -7,15 +7,6 @@ logger = logging.getLogger(__name__)
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 
-import asyncio
-import subprocess
-import random
-import logging
-
-# Constants
-SAMPLE_VIDEO_DURATION = 10
-MAX_START_TIME = 30
-CRF_VALUE = 18
 
 import os
 import re
@@ -24,7 +15,6 @@ import json
 import random
 import shutil
 import asyncio
-#import subprocess
 
 from ..config import Config
 from collections import defaultdict
@@ -266,26 +256,11 @@ async def ytdl_worker(name, queue):
                 except:
                     pass
                 settings = await c.db.get_all_settings(m.from_user.id)
-                screenshots = settings['screen_shot']
-                samplevideo = settings['sample_video']
+               # screenshots = settings['screen_shot']
+                #samplevideo = settings['sample_video']
                 as_file = settings['upload_as_file']
                 thumb_id = settings['permanent_thumb']
-               # screenshots = settings['screen_shot']
-             #   samplevideo = settings['sample_video']
-             #   as_file = settings['upload_as_file']
-            #    thumb_id = settings['permanent_thumb']
 
-                # Generate screenshots
-                screenshot_paths = []
-                for i in range(screenshots):
-                    screenshot_path = f"{tmp_directory_for_each_user}/screenshot_{i}.png"
-                    await generate_screenshot(download_directory, screenshot_path)
-                    screenshot_paths.append(screenshot_path)
-
-                # Generate sample video
-                sample_video_path = f"{tmp_directory_for_each_user}/sample_video.mp4"
-                await generate_sample_video(download_directory, sample_video_path)
-              
                 try:
                     duration = await get_duration(download_directory)
                 except:
@@ -391,11 +366,6 @@ async def ytdl_worker(name, queue):
                             progress_args=("Upload Status:", start_time, c, m.message, id)
                         )
                         await m.message.delete()
-
-                        for screenshot_path in screenshot_paths:
-                            await c.send_photo(m.from_user.id, screenshot_path)
-                        if sample_video_path:
-                            await c.send_video(m.from_user.id, sample_video_path)
                     except FloodWait as e:
                         await asyncio.sleep(e.x)
                         try:
@@ -413,7 +383,6 @@ async def ytdl_worker(name, queue):
                             pass
                         del Config.TIME_GAP1[m.from_user.id]
                         continue 
-                      
  
                 if (as_file) & (ytdl_ext != "mp3"):
                     try:
@@ -505,80 +474,5 @@ async def complete_process(c, m):
     del Config.TIME_GAP2[m.from_user.id]
 
 
-async def get_duration(video_path):
-    """
-    Get the duration of a video file.
 
-    Args:
-        video_path: The path to the video file.
-
-    Returns:
-        The duration of the video in seconds.
-    """
-    cmd = ["ffprobe", "-i", video_path, "-show_entries", "format=duration", "-v", "quiet", "-of", "csv=p=0"]
-    try:
-        output = await asyncio.create_subprocess_exec(*cmd, stdout=asyncio.subprocess.PIPE)
-        stdout, _ = await output.communicate()
-        video_duration = stdout.decode("utf-8").strip()
-        return float(video_duration)
-    except asyncio.SubprocessError as e:
-        logging.error(f"Error getting video duration: {e}")
-        return None
-
-async def generate_sample_video(video_path, sample_video_path, duration=SAMPLE_VIDEO_DURATION):
-    """
-    Generate a sample video from a given video file.
-
-    Args:
-        video_path: The path to the original video file.
-        sample_video_path: The path to save the sample video file.
-        duration: The duration of the sample video in seconds. Defaults to SAMPLE_VIDEO_DURATION.
-
-    Returns:
-        True if the sample video was generated successfully, False otherwise.
-    """
-    video_duration = await get_duration(video_path)
-    if video_duration is None:
-        return False
-
-    # Calculate the start time for the sample video
-    start_time = min(video_duration / 2, MAX_START_TIME)  # Start at the middle of the video, or MAX_START_TIME seconds, whichever is shorter
-
-    # Use FFmpeg to extract a sample video from the original video
-    cmd = ["ffmpeg", "-i", video_path, "-ss", str(start_time), "-t", str(duration), "-c:v", "libx264", "-crf", str(CRF_VALUE), sample_video_path]
-    try:
-        await asyncio.create_subprocess_exec(*cmd)
-    except asyncio.SubprocessError as e:
-        logging.error(f"Error generating sample video: {e}")
-        return False
-
-    return True
-
-async def generate_screenshot(video_path, screenshot_path):
-    """
-    Generate a screenshot from a given video file.
-
-    Args:
-        video_path: The path to the original video file.
-        screenshot_path: The path to save the screenshot file.
-
-    Returns:
-        True if the screenshot was generated successfully, False otherwise.
-    """
-    video_duration = await get_duration(video_path)
-    if video_duration is None:
-        return False
-
-    # Generate a random timestamp for the screenshot
-    timestamp = random.uniform(0, video_duration)
-
-    # Use FFmpeg to extract a screenshot from the original video
-    cmd = ["ffmpeg", "-i", video_path, "-ss", str(timestamp), "-vframes", "1", screenshot_path]
-    try:
-        await asyncio.create_subprocess_exec(*cmd)
-    except asyncio.SubprocessError as e:
-        logging.error(f"Error generating screenshot: {e}")
-        return False
-
-    return True
-
+            
