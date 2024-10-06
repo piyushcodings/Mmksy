@@ -17,17 +17,17 @@ class Config:
     API_HASH = "02f7356fe1607e5fde0512195b4d7be5"
 
     AUTH_USERS =  [int(i) for i in os.environ.get("AUTH_USERS", "1996570767").split(" ")]
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "7503659482:AAErUtMRGo0TN_CV2fB_ogAzw1Np47r7Ksc")
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "7506408964:AAFB-iKQtMOY-pIx9noUNY5lApgKorew4l4")
     DATABASE_URL = os.environ.get("DATABASE_URL", "mongodb+srv://gojomerge:5exfugtttf@cluster0.mefkdax.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
     DOWNLOAD_LOCATION = "./DOWNLOADS"
-    DB_CHANNEL_ID = int(os.environ.get("DB_CHANNEL_ID", "-1002016424677"))
+    DB_CHANNEL_ID = int(os.environ.get("DB_CHANNEL_ID", "-1002249908184"))
     PROCESS_MAX_TIMEOUT = 3600
     RESTART_TIME = []
     TG_MAX_FILE_SIZE = 3980000000
     TIME_GAP1 = {}
     TIME_GAP2 = {}
     timegap_message = {}
-    TRACE_CHANNEL = os.environ.get("DB_CHANNEL_ID", "-1002016424677")
+    TRACE_CHANNEL = os.environ.get("DB_CHANNEL_ID", "-1002249908184")
     last_edit = defaultdict(lambda: 0)
     SESSION_STRING = os.environ.get(
         "SESSION_STRING",
