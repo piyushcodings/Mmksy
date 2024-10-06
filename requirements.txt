@@ -8,7 +8,7 @@ pyromod==2.0.0
 hachoir==3.1.2
 tgcrypto==1.2.3
 dnspython==2.3.0
-pyrofork==1.4.1
+pyrofork
 cloudscraper==1.2.68
 olefile==0.46
 requests==2.31.0
