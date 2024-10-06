@@ -13,10 +13,10 @@ from collections import defaultdict
 
 class Config:
     ACTIVE_DOWNLOADS = []
-    API_ID = int("17906941")
-    API_HASH = "02f7356fe1607e5fde0512195b4d7be5"
+    API_ID = int("23907288")
+    API_HASH = "f9a47570ed19aebf8eb0f0a5ec1111e5"
 
-    AUTH_USERS =  [int(i) for i in os.environ.get("AUTH_USERS", "1996570767").split(" ")]
+    AUTH_USERS =  [int(i) for i in os.environ.get("AUTH_USERS", "5605747843").split(" ")]
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "7506408964:AAFB-iKQtMOY-pIx9noUNY5lApgKorew4l4")
     DATABASE_URL = os.environ.get("DATABASE_URL", "mongodb+srv://gojomerge:5exfugtttf@cluster0.mefkdax.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
     DOWNLOAD_LOCATION = "./DOWNLOADS"
@@ -31,7 +31,7 @@ class Config:
     last_edit = defaultdict(lambda: 0)
     SESSION_STRING = os.environ.get(
         "SESSION_STRING",
-        "BQBbrFbGJmkNu1iSnJYuStz9JfxXY_s_j0cr0SxW4_9AVClK5D4WDymx-voNloEu28UjyPBLeckDsEQUBhHKebROcA4ZOcnpTLxa7jmwQMSct88nbDKPcswOhvtcaM-uMUlwUU51aCfl0jm5q9xmgVkdFO2htVKeEYasC642mlKmtnl0h44oOBqwGsy7KloPzxwB58yhxn3OWFF0bKqt1PyDl-rdXQ_gKVG3Z96id5I_tUeKl5mn89xDEZxMhbjD54S-h1O8MgB_Ix2xzVKy5GK9GobmDBS6ib_s_gp4KZOWQW_uG5N0grgNDQMnMjWXz2hcYVwB3yM38QljSTEqD4O9YJHS_gAHO2_PCx1tuZFB98u3KSNpyObkXcrgEHE9MR5clD3Vqr7rLZE0Dy5FMVBmnWVNf_HK-cggxsjVbxRXwY8QND309LnmVpdsc865XEZ5N77r0EAXBLo6B4BxWDqO6GnJj6qhzgAAAAB1aFXoAA",
+        "BQFsy9gAWwqRcubot1GlGhJWo6Mf_QCktBHHLeIlbbwFhyb1Abn0ILqG7ku_OvZBd7ZWRrgqZvDjeb2XdVrsjSOH3ximv6pIt4ocdd6dp_DZeHQXvMSs5Bk0bFqZF2k-PS_cR9DPlUy9UOFXpuXtJjwKZCj25Ha0vQTY4TONMF8MzMvK87a9I2WetNIIKhr7mrRUCGoEWusg1grTqmeE0LmQa11tL30j0aW3p678blcOCdxMvgpEcvbV0RwlClYHVA1mCZPwsiaQKWJCg0Oj7UFPRhRwPy3mA7DSyA0tKavoPucF3RNiHTdZBqItGVdXlUANlnn3zsAggPrgkkuCrQOQZVgKywAAAAGBTJMDAA",
     )
 
     # QUEUE
