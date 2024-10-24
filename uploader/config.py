@@ -18,7 +18,7 @@ class Config:
 
     AUTH_USERS =  [int(i) for i in os.environ.get("AUTH_USERS", "5605747843").split(" ")]
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "7506408964:AAFB-iKQtMOY-pIx9noUNY5lApgKorew4l4")
-    DATABASE_URL = os.environ.get("DATABASE_URL", "mongodb+srv://gojomerge:5exfugtttf@cluster0.mefkdax.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+    DATABASE_URL = os.environ.get("DATABASE_URL", "mongodb://mrdora5100:piyush+4511@cluster1-shard-00-00.qk7a1.mongodb.net:27017,cluster1-shard-00-01.qk7a1.mongodb.net:27017,cluster1-shard-00-02.qk7a1.mongodb.net:27017/?ssl=true&replicaSet=atlas-rm491p-shard-0&authSource=admin&retryWrites=true&w=majority&appName=Cluster1")
     DOWNLOAD_LOCATION = "./DOWNLOADS"
     DB_CHANNEL_ID = int(os.environ.get("DB_CHANNEL_ID", "-1002249908184"))
     PROCESS_MAX_TIMEOUT = 3600
